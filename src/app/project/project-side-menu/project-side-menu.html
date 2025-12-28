@@ -14,11 +14,26 @@
 
   <div class="courses-grid">
     <div *ngFor="let course of courses" class="course-card">
-      <h3>{{ course.title }}</h3>
-      <div class="info">
-        <span>ظرفیت: {{ course.capacity }} نفر</span>
-        <span>ID: {{ course.id }}</span>
-      </div>
-    </div>
+  <h3>{{ course.title }}</h3>
+  <div class="info">
+    <span>
+  ظرفیت: {{ course.capacity }} |
+  ثبت‌نام: {{ course.users_count }}
+</span>
+
+  </div>
+  <button 
+    *ngIf="userRole === 'ME'" 
+    class="register-btn" 
+    (click)="registerToCourse(course.id)">
+    ثبت‌نام
+  </button>
+</div>
+
   </div>
 </div>
+
+
+
+  
+  

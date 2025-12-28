@@ -50,7 +50,7 @@ export class AuthService {
           user_id : profile.user_id || 'null',
           username: profile.username || 'Guest',
           token: localStorage.getItem('access') || '',
-          role: profile.role || 'user',
+          role: profile.role || 'ME',
           profile_image: profile.profile_image,
           bio: profile.bio,
           skills: profile.skills
@@ -84,5 +84,11 @@ export class AuthService {
       catchError(() => of(false))  
     );
   }
+
+  getCurrentUserRole(): string {
+  const user = this.currentUser.value;
+  return user?.role || '';
+}
+
   
 }
