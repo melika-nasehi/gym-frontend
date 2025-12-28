@@ -1,0 +1,19 @@
+<div style="display: flex; height: 100vh">
+
+  <!-- Sidebar -->
+  <aside style="width: 220px; background: #222; color: white; padding: 15px">
+    <h3>Gym System</h3>
+    <nav>
+      <a routerLink="/dashboard">Dashboard</a><br><br>
+      <a routerLink="/members">Members</a><br><br>
+      <a routerLink="/classes">Classes</a><br><br>
+      <a routerLink="/sessions">Sessions</a>
+    </nav>
+  </aside>
+
+  <!-- Content -->
+  <main style="flex: 1; padding: 20px">
+    <router-outlet></router-outlet>
+  </main>
+
+</div>
