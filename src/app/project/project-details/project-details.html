@@ -1,0 +1,27 @@
+<div class="project-details">
+  <h3>{{ project.title }}</h3>
+  
+  <p><strong>Access:</strong> {{ project.access === 'PB' ? 'Public' : 'Private' }}</p>
+  <p><strong>Category:</strong>
+    {{
+      project.category === 'PR' ? 'Personal' :
+      project.category === 'WR' ? 'Work' :
+      project.category === 'TM' ? 'Team' : ''
+    }}
+  </p>
+  
+  <p><strong>Start Date:</strong> {{ project.startDate | date : 'fullDate'}}</p>
+  <p><strong>End Date:</strong> {{ project.endDate | date : 'fullDate'}}</p>
+  <p><strong>Archived:</strong> {{ project.is_archived ? 'Yes' : 'No' }}</p>
+  <p><strong>Theme:</strong> {{ project.theme }}</p>
+
+  <div class="project-users">
+    <h4>Members:</h4>
+    <ul>
+      @for (user_item of users; track user_item) {
+        <li>{{ user_item.username }} ({{ user_item.role }}) </li>
+      }
+    </ul>
+  </div>
+  <!-- <app-tasklist [name]="users." [userId]="selectedUserId" [projectId]="selectedProjectId"></app-tasklist> -->
+</div>

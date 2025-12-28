@@ -1,0 +1,57 @@
+
+<main class="admin-panel-container">
+
+  <section id="users-section" class="sidebar-column">
+    <h1>Users</h1>
+    <div class="user-list-wrapper">
+      <ul id="users">
+        @for (item of backend_users; track item.id) {
+          <li>
+            <app-user [user]="item" 
+                      [selected]="item.id.toString() === selectedUserId"
+                      (select)="onSelectUser($event)">
+            </app-user>
+          </li>
+        }
+      </ul>
+    </div>
+  </section>
+
+  <div class="content-column">
+    @if (selectedUser) {
+      <section id="projects-section">
+        <h2>{{selectedUser.username}}'s Projects</h2>
+        <div class="tabs-row">
+          @for (item of backend_projects; track item.id) {
+            <app-project-tab [project]="item"
+                             [selected]="item.id === selectedProjectId"
+                             (select)="onSelectProject($event)"></app-project-tab>
+          }
+        </div>
+        @if (selectedProject) {
+          <div class="project-details">
+            <app-project-details [project]="selectedProject" [users]="getProjectUsers(selectedProject)"></app-project-details>
+          </div>
+        }
+      </section>
+
+      @if (selectedProjectId) {
+        <section id="tasks-section">
+          <h2>Tasks</h2>
+          <app-tasklist [name]="selectedUser.username" 
+                        [userId]="selectedUserId" 
+                        [projectId]="selectedProjectId" 
+                        [tasks]="backend_tasks">
+          </app-tasklist>
+        </section>
+      }
+    } @else {
+      <div class="placeholder">
+        <span class="placeholder-icon"></span>
+        <h3>Select a user from the list</h3>
+        <p>Their projects and tasks will appear here.</p>
+      </div>
+    }
+  </div>
+
+</main>

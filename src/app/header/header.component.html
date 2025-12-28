@@ -1,0 +1,18 @@
+
+<header>
+  <div class="logo-area">
+    <img src="task_management.png" alt="EasyTask Logo">
+    <div class="title-group">
+      <h1>EasyTask</h1>
+      <p>Your daily tasks, simplified.</p>
+    </div>
+  </div>
+
+  <div class="user-area" *ngIf="username">
+    <span>Welcome, <strong>{{ username }}</strong>!</span>
+    <button class="logout-button" (click)="logout()">
+      <span class="logout-icon"></span>
+      Logout
+    </button>
+  </div>
+</header>

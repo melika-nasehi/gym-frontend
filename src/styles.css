@@ -1,1 +1,110 @@
-/* You can add global styles to this file, and also import other style files */
+
+:root {
+  --jira-bg: #F4F5F7;
+  --jira-card-bg: #FFFFFF;
+  --jira-text: #172B4D;
+  --jira-text-subtle: #5E6C84;
+  --jira-border: #DFE1E6;
+  --jira-primary: #0052CC;
+  --jira-primary-hover: #0065FF;
+  --jira-success: #00875A;
+  --jira-danger: #DE350B;
+  --jira-highlight: #DEEBFF;
+}
+
+body, html {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+  font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "Helvetica Neue", Arial, sans-serif;
+  background-color: var(--jira-bg);
+  color: var(--jira-text);
+}
+
+button.primary-action {
+  background-color: var(--jira-primary);
+  color: white;
+  border: none;
+  border-radius: 5px;
+  padding: 0.75rem 1.5rem;
+  font-weight: 600;
+  cursor: pointer;
+  transition: background-color 0.2s ease;
+}
+button.primary-action:hover {
+  background-color: var(--jira-primary-hover);
+}
+
+button.secondary-action {
+  background-color: #F4F5F7;
+  color: #42526E;
+  border: 1px solid #DFE1E6;
+  border-radius: 5px;
+  padding: 0.75rem 1.5rem;
+  font-weight: 500;
+  cursor: pointer;
+  transition: background-color 0.2s ease;
+}
+button.secondary-action:hover {
+  background-color: #EBECF0;
+}
+
+
+button {
+  display: inline-flex; 
+  align-items: center;
+  justify-content: center;
+  gap: 0.5rem; 
+  
+  font-family: inherit;
+  font-weight: 600;
+  font-size: 0.9rem;
+  padding: 0.6rem 1.2rem;
+  border-radius: 5px;
+  border: 1px solid transparent;
+  cursor: pointer;
+  transition: all 0.2s ease-in-out;
+  text-decoration: none; 
+}
+
+button:disabled {
+  opacity: 0.5;
+  cursor: not-allowed;
+}
+
+button.primary {
+  background-color: var(--jira-primary, #0052CC);
+  color: white;
+}
+button.primary:hover:not(:disabled) {
+  background-color: var(--jira-primary-hover, #0065FF);
+  transform: translateY(-2px);
+  box-shadow: 0 4px 8px rgba(0, 82, 204, 0.3);
+}
+
+button.standard {
+  background-color: #F4F5F7;
+  color: #42526E;
+  border: 1px solid #DFE1E6;
+}
+button.standard:hover:not(:disabled) {
+  background-color: #EBECF0;
+}
+
+button.subtle {
+  background-color: transparent;
+  color: #42526E;
+}
+button.subtle:hover:not(:disabled) {
+  background-color: #EBECF0;
+}
+
+button.danger {
+  background-color: transparent;
+  color: var(--jira-danger, #DE350B);
+}
+button.danger:hover:not(:disabled) {
+  background-color: var(--jira-danger, #DE350B);
+  color: white;
+}
+

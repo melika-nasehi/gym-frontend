@@ -1,0 +1,23 @@
+
+.project-details {
+  background-color: #F4F5F7;
+  padding: 1.5rem;
+  border-radius: 5px;
+}
+h3 { margin-top: 0; }
+p { color: var(--jira-text-subtle); }
+.project-users h4 { margin-bottom: 0.5rem; }
+.project-users ul {
+  list-style: none;
+  padding: 0;
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.5rem;
+}
+.project-users li {
+  background-color: var(--jira-highlight);
+  color: var(--jira-primary);
+  padding: 0.25rem 0.75rem;
+  border-radius: 15px;
+  font-size: 0.85rem;
+}

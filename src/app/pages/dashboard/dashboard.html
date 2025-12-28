@@ -1,0 +1,77 @@
+
+<div class="dashboard-container">
+  
+  <aside class="dashboard-sidebar" *ngIf="user">
+    
+    <div class="sidebar-profile">
+      <img [src]="user.profile_image || 'users_pic/user-2.jpg'" alt="Profile">
+      <h4>{{ user.username }}</h4>
+      <p>{{ user.role === 'MN' ? 'Manager' : 'User' }}</p>
+    </div>
+
+    <nav class="main-nav">
+  <a (click)="showProjects()" [class.active]="activeView === 'projects'">
+    <span class="nav-icon projects-icon"></span> Projects
+  </a>
+  <a (click)="showTasks()" [class.active]="activeView === 'tasks'">
+    <span class="nav-icon tasks-icon"></span> Tasks
+  </a>
+</nav>
+    
+  <div class="sidebar-actions">
+    <button class="primary" (click)="onNewProject()">
+      <span class="button-icon plus-icon"></span> 
+      Start a New Project
+    </button>
+  </div>
+
+  </aside>
+
+  <main class="dashboard-content">
+    
+    <section *ngIf="activeView === 'projects'">
+      <h2>My Projects</h2>
+       @if (backend_projects.length > 0) {
+      <div class="project-view">
+        <div class="tabs-row">
+          @for (item of backend_projects; track item.id) {
+            <app-project-tab [project]="item"
+                             [selected]="item.id === selectedProjectId"
+                             (select)="onSelectProject($event)"></app-project-tab>
+          }
+        </div>
+        @if (selectedProject) {
+          <app-project-details [project]="selectedProject" [users]="getProjectUsers(selectedProject)"></app-project-details>
+        }
+      </div>
+    } @else {
+      <div class="empty-state">
+        <span class="empty-state-icon projects-icon"></span>
+        <h3>You don't have any projects yet.</h3>
+        <p>Get started by creating your first project.</p>
+        <button class="primary" (click)="onNewProject()">
+          <span class="button-icon plus-icon"></span>
+          Create New Project
+        </button>
+      </div>
+    }
+
+    </section>
+
+    <section *ngIf="activeView === 'tasks'">
+        <h2>My Tasks</h2>
+        @if(user) {
+            <app-tasklist [name]="user.username" 
+                          [userId]="user.user_id" 
+                          [projectId]="selectedProjectId" 
+                          [tasks]="backend_tasks">
+            </app-tasklist>
+        }
+    </section>
+
+  </main>
+</div>
+
+@if (isAddingProject) {
+  <app-new-project [userID]="user?.user_id" (close)="isAddingProject = false"></app-new-project>
+}

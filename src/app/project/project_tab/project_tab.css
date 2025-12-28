@@ -1,0 +1,21 @@
+
+button.project-tab {
+  background: none;
+  border: 1px solid var(--jira-border);
+  padding: 0.5rem 1rem;
+  border-radius: 20px;
+  font-weight: 500;
+  cursor: pointer;
+  color: var(--jira-text-subtle);
+  transition: all 0.2s ease;
+}
+button.project-tab:hover {
+  background-color: var(--jira-highlight);
+  color: var(--jira-primary);
+  border-color: var(--jira-primary);
+}
+button.project-tab.active {
+  background-color: var(--jira-primary);
+  color: white;
+  border-color: var(--jira-primary);
+}

@@ -1,0 +1,62 @@
+
+<div class="parent">
+
+<!-- <div class="side-menu"> 
+  <app-side-menu></app-side-menu>
+</div>  -->
+
+<div class="center">
+<div class="home-container">
+  <h1>Welcome, {{username}}</h1>
+  <p class="subtitle">Select an option to get started.</p>
+
+  <div class="menu-grid">
+    <a class="menu-card" (click)="goToDashboard()">
+      <div class="menu-card-icon dashboard-icon"></div>
+      <h3>Dashboard</h3>
+      <p>View projects, tasks, and statistics.</p>
+    </a>
+
+    <a class="menu-card" (click)="onAdminPanel()" *ngIf="isAdmin">
+      <div class="menu-card-icon admin-icon"></div>
+      <h3>Admin Panel</h3>
+      <p>Manage users, roles, and permissions.</p>
+    </a>
+
+    <a class="menu-card logout-card" (click)="logout()" *ngIf="isLoggedIn">
+      <div class="menu-card-icon logout-icon"></div>
+      <h3>Log Out</h3>
+      <p>End your current session.</p>
+    </a>
+  </div>
+ </div>
+ <div class="recent-projects-and-upcoming-tasks">
+    <div class="recent-projects">
+        <app-recent-projects></app-recent-projects>
+    </div>
+
+    <div class="upcoming-tasks">
+      <app-upcoming-tasks></app-upcoming-tasks>
+    </div>
+  </div>
+
+  <div class="footer">
+    <p class="call-me">
+      
+    </p>
+  </div>
+</div>      
+
+<div class="calender-and-chart">
+  <div class="calender">
+    <app-calender [meetings]="meetings"></app-calender>
+  </div>
+  <div class="chart">
+    chart
+  </div>
+</div>
+
+
+
+</div>
+
