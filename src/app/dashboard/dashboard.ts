@@ -12,17 +12,19 @@ import { DashboardService } from './dashboard.service';
 export class Dashboard implements OnInit {
   data: any;
   loading = true;
+  error: string | null = null;
 
   constructor(private dashboardService: DashboardService) {}
 
   ngOnInit(): void {
-    // فعلاً برای تست: member_id = 1
     this.dashboardService.getMemberDashboard(1).subscribe({
       next: (res) => {
         this.data = res;
         this.loading = false;
       },
-      error: () => {
+      error: (err) => {
+        console.error('API Error:', err);
+        this.error = 'خطا در اتصال به سرور';
         this.loading = false;
       },
     });
