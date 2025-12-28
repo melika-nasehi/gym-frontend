@@ -8,7 +8,7 @@ import { user_interface } from '../user/user.model';
 import { RouterLink } from '@angular/router';
 import { Calender } from '../calender/calender';
 import { SideMenu } from "../side-menu/side-menu";
-import { RecentProjects } from "../project/recent-projects/recent-projects";
+import { RecentProjects } from "../project/recent-courses/recent-courses";
 import { UpcomingTasks } from "../tasklist/task/upcoming-tasks/upcoming-tasks";
 
 @Component({

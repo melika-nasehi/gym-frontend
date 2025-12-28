@@ -36,9 +36,9 @@ AddNewTask(entered_task: new_task_interface, userId: string) {
         return;
       }
 
-      this.api.getProjects(userId).subscribe({
-        next: (projects) => {
-          this.backend_projects = projects;
+      this.api.getCourses(userId).subscribe({
+        next: (courses) => {
+          this.backend_projects = courses;
           const founded_project = this.backend_projects.find(proj => proj.id.toString() === entered_task.project_id.toString());
           console.log("test",founded_project)
           if (!founded_project) {

@@ -69,10 +69,10 @@ export class App implements OnInit {
   onSelectUser(id: string) {
     this.selectedUserId = id;
 
-    this.api.getProjects(id).subscribe({
-      next: (projects) => {
-        this.backend_projects = projects;
-        console.log('Projects for user:', projects);
+    this.api.getCourses(id).subscribe({
+      next: (courses) => {
+        this.backend_projects = courses;
+        console.log('Projects for user:', courses);
         this.selectedProjectId = this.backend_projects[0].id;
       },
       error: (err) => {

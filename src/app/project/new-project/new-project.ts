@@ -4,7 +4,7 @@ import { TasksService } from '../../tasklist/task/tasklist.service';
 import { Api } from '../../services/api';
 import { NgFor } from '@angular/common';
 import { project_inteface } from '../../project/project.model';
-import { ProjectService } from '../project.service';
+import { CourseService } from '../course.service';
 
 @Component({
   selector: 'app-new-project',
@@ -22,7 +22,7 @@ export class NewProject {
   enteredEndDate = ''
   entered_users = []
 
-  private projectService = inject(ProjectService)
+  private courseService = inject(CourseService)
 
   constructor(private api : Api) {}
 
@@ -36,7 +36,7 @@ export class NewProject {
   onSubmitForm(){
     console.log('userID:', this.userID);
 
-    this.projectService.addNewProject(this.userID, 
+    this.courseService.addNewCourse(this.userID, 
       {title:this.enteredTitle ,
        startDate : this.enteredStartDate ,
        endDate : this.enteredEndDate,

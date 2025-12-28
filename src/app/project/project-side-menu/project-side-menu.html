@@ -1,0 +1,24 @@
+<div class="course-list">
+  <div class="header">
+    <h1> لیست کلاس‌ها</h1>
+    <button (click)="loadCourses()" [disabled]="loading">
+      {{ loading ? '' : '' }} refresh
+    </button>
+  </div>
+
+  <div *ngIf="loading" class="loading">در حال بارگذاری...</div>
+
+  <div *ngIf="!loading && courses.length === 0" class="empty">
+    هیچ کلاسی یافت نشد
+  </div>
+
+  <div class="courses-grid">
+    <div *ngFor="let course of courses" class="course-card">
+      <h3>{{ course.title }}</h3>
+      <div class="info">
+        <span>ظرفیت: {{ course.capacity }} نفر</span>
+        <span>ID: {{ course.id }}</span>
+      </div>
+    </div>
+  </div>
+</div>

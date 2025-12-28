@@ -34,8 +34,8 @@ export class NewTask implements OnChanges{
 
 
   loadProjects() {
-  this.api.getProjects(this.userID).subscribe(projects => {
-    this.projects = projects;
+  this.api.getCourses(this.userID).subscribe(courses => {
+    this.projects = courses;
     // if(this.projects.length > 0) {
     //   this.entered_project_id = this.projects[0].id;
     // }

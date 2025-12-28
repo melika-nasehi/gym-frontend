@@ -1,7 +1,7 @@
 import { Component } from '@angular/core';
 import { task_interface } from '../task.model';
 import { AuthService } from '../../../auth.service';
-import { ProjectService } from '../../../project/project.service';
+import { CourseService } from '../../../project/course.service';
 import { TasksService } from '../tasklist.service';
 
 @Component({

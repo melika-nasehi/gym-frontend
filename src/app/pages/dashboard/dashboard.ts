@@ -10,7 +10,7 @@ import { profile_interface, user_interface } from '../../user/user.model';
 import { NewProject } from "../../project/new-project/new-project";
 import { SideMenu } from "../../side-menu/side-menu";
 import { HeaderComponent } from "../../header/header.component";
-import { ProjectService } from '../../project/project.service';
+import { CourseService } from '../../project/course.service';
 @Component({
   selector: 'app-dashboard',
   standalone: true,
@@ -34,7 +34,7 @@ export class Dashboard implements OnInit {
   activeView: 'projects' | 'tasks' | 'none' = 'none';
 
   constructor(private auth: AuthService, private api: Api) {}
-  private projectService = inject(ProjectService)
+  private courseService = inject(CourseService)
 
   ngOnInit() {
     this.auth.currentUser.subscribe(user => {
@@ -50,7 +50,7 @@ export class Dashboard implements OnInit {
       }
     });
 
-    this.projectService.projectsUpdated.subscribe((newProject)=>{
+    this.courseService.coursesUpdated.subscribe((newProject)=>{
       this.backend_projects.push(newProject)
     })
   }
@@ -59,9 +59,9 @@ export class Dashboard implements OnInit {
     this.activeView = 'projects';
     
     if (this.user?.user_id) {
-      this.api.getProjects(this.user.user_id).subscribe({
-        next: (projects) => {
-          this.backend_projects = projects.results || projects; 
+      this.api.getCourses(this.user.user_id).subscribe({
+        next: (courses) => {
+          this.backend_projects = courses.results || courses; 
           if (this.backend_projects.length > 0) {
             this.selectedProjectId = this.backend_projects[0].id;
           } else {
